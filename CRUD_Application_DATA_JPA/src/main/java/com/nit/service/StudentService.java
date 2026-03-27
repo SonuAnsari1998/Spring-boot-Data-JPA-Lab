@@ -12,11 +12,12 @@ import com.nit.enties.School;
 public class StudentService {
 	@Autowired
 	StudentRepo studentRepo;
-
+	
+	//Add
 	public void addStudent(School sc) {
 		studentRepo.save(sc);
 	}
-
+	//Update
 	public void updateStudentById(int id, School student) {
 		Optional<School> byId = studentRepo.findById(id);
 		if (byId.isPresent()) {
@@ -30,5 +31,17 @@ public class StudentService {
 			System.err.println(id + "Not found...");
 		}
 	}
-
+	//Delete
+	public void deleteStudent(int id) {
+		studentRepo.deleteById(id);
+	}
+	
+	//View
+	public void viewStudent() {
+		Iterable<School> all = studentRepo.findAll();
+		for(School s:all) {
+			IO.println(s);
+		}
+		
+	}
 }
