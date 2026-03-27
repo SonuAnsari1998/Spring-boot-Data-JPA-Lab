@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class School {
-
+	
 	@Id
 	private int student_id;
 	@Column(length = 20)
@@ -25,3 +25,4 @@ public class School {
 	private String student_email;
 
 }
+

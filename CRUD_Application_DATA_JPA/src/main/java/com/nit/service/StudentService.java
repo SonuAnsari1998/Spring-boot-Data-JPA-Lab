@@ -16,22 +16,19 @@ public class StudentService {
 	public void addStudent(School sc) {
 		studentRepo.save(sc);
 	}
-	
-	public void updateStudentById(int id,School student) {
+
+	public void updateStudentById(int id, School student) {
 		Optional<School> byId = studentRepo.findById(id);
-		if(byId.isPresent()) {
+		if (byId.isPresent()) {
 			School school = byId.get();
 			school.setStudent_name(student.getStudent_name());
 			school.setStudent_Address(student.getStudent_Address());
 			school.setStudent_contact(school.getStudent_contact());
 			school.setStudent_email(student.getStudent_email());
 			studentRepo.save(school);
-		}else {
-			System.err.println(id+"Not found...");
+		} else {
+			System.err.println(id + "Not found...");
 		}
 	}
-	
-	
-	
 
 }
