@@ -2,6 +2,7 @@ package com.nit.runner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -59,35 +60,71 @@ public class ApplicationRunner implements CommandLineRunner {
 		}
 		case 3 -> {
 			long id = Long.parseLong(IO.readln("Enter Food id"));
-			//controller.findAllById(id);
-			
+			Optional<FoodOrder> byId = controller.findById(id);
+			System.out.println(byId);
 		}
 		case 4 -> {
-
+			Iterable<FoodOrder> all = controller.findAll();
+			all.forEach(IO::println);
 		}
 		case 5 -> {
-
+			int findNoOfOrder = Integer.parseInt(IO.readln("Enter no of order to find"));
+			List<Long> food = new ArrayList<>();
+			for (int i = 1; i <= findNoOfOrder; i++) {
+				long id = Long.parseLong(IO.readln("Enter Food id"));
+				food.add(id);
+			}
+			controller.findAllById(food);
 		}
 		case 6 -> {
-
+			long id = Long.parseLong(IO.readln("Enter Food id"));
+			boolean existsById = controller.existsById(id);
+			if (existsById) {
+				System.out.println("id: " + id + " Found");
+			} else {
+				System.err.println(id + " Not found");
+			}
 		}
 		case 7 -> {
-
+			controller.count();
 		}
 		case 8 -> {
-
+			long id = Long.parseLong(IO.readln("Enter Food id"));
+			controller.deleteById(id);
 		}
 		case 9 -> {
-
+			controller.delete(foodOrder);
 		}
 		case 10 -> {
+			long id = Long.parseLong(IO.readln("Enter Food id"));
+			String customerNam = IO.readln("Enter Customer Name");
+			String foodItem = IO.readln("Enter Food Item");
+			int quantity = Integer.parseInt(IO.readln("Enter Food Qty"));
+			double pricePerItem = Double.parseDouble(IO.readln("Enter Price per item"));
+			double totalAmount = Double.parseDouble(IO.readln("Enter total Amount"));
+			FoodOrder food = new FoodOrder(id, customerNam, foodItem, quantity, pricePerItem, totalAmount);
+			controller.delete(food);
 
 		}
 		case 11 -> {
-
+			controller.deleteAll(null);
+			
 		}
 		case 12 -> {
-
+			int noOfItem = Integer.parseInt(IO.readln("Enter No. of items"));
+			List<FoodOrder> food = new ArrayList<>();
+			for (int i = 1; i <= noOfItem; i++) {
+				long id = Long.parseLong(IO.readln("Enter Food id"));
+				String customerNam = IO.readln("Enter Customer Name");
+				String foodItem = IO.readln("Enter Food Item");
+				int quantity = Integer.parseInt(IO.readln("Enter Food Qty"));
+				double pricePerItem = Double.parseDouble(IO.readln("Enter Price per item"));
+				double totalAmount = Double.parseDouble(IO.readln("Enter total Amount"));
+				FoodOrder food1 = new FoodOrder(id, customerNam, foodItem, quantity, pricePerItem, totalAmount);
+				food.add(food1);
+			}
+			controller.deleteAll(food);
+			
 		}
 		case 13 -> {
 			IO.println("Thank you!! vist again");
