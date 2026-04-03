@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "EmployeeManagementSystem")
-@Component
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
