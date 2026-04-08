@@ -17,7 +17,7 @@ public class EmployeeRepositroy implements IEmployeeRepo {
 
 	@Override
 	public Page<Employee> findAll1() {
-		Pageable of = PageRequest.of(0, 5);
+		Pageable of = PageRequest.of(1, 10);
 		return employeeRepository.findAll(of);
 
 	}
