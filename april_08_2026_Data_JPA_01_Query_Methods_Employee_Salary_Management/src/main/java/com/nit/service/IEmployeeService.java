@@ -24,10 +24,11 @@ public interface IEmployeeService {
 	String updateEmployeeDetails(@Param("name") String name, @Param("department") String department,
 			@Param("salary") double salary, @Param("exp") int experience, @Param("id") long id);
 
+	
 	String deleteEmployeeDetails(long id);
 
 	String increaseSalary(@Param("id") Long id, @Param("percentage") double percentage);
 
-	int deleteEmployeesWithLowSalary(@Param("salary") double salary);
+	String deleteEmployeesWithLowSalary(@Param("salary") double salary);
 
 }

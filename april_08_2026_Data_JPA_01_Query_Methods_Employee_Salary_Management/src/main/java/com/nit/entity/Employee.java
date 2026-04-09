@@ -1,5 +1,7 @@
 package com.nit.entity;
 
+import org.springframework.stereotype.Component;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -10,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "EmployeeSalaryManagement")
+@Component
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

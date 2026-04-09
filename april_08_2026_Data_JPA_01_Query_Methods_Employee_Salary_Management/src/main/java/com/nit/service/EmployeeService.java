@@ -39,21 +39,25 @@ public class EmployeeService implements IEmployeeService{
 
 	@Override
 	public String updateEmployeeDetails(String name, String department, double salary, int experience, long id) {
-		return employee.updateEmployeeDetails(name, department, salary, experience, id);
+		 employee.updateEmployeeDetails(name, department, salary, experience, id);
+		 return "Updated sucessfully";
 	}
 
 	@Override
 	public String deleteEmployeeDetails(long id) {
-		return employee.deleteEmployeeDetails(id);
+		employee.deleteEmployeeDetails(id);
+		return "Deleted sucessfully";
 	}
 
 	@Override
 	public String increaseSalary(Long id, double percentage) {
-		return employee.increaseSalary(id, percentage);
+		employee.increaseSalary(id, percentage);
+		return "Id "+id+" incresed with "+percentage+"%";
 	}
 
 	@Override
-	public int deleteEmployeesWithLowSalary(double salary) {
-		return employee.deleteEmployeesWithLowSalary(salary);
+	public String deleteEmployeesWithLowSalary(double salary) {
+		employee.deleteEmployeesWithLowSalary(salary);
+		return "Lowest Salary Deleted Sucess";
 	}
 }
