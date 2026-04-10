@@ -38,11 +38,11 @@ public interface IEmployee extends JpaRepository<Employee, Long> {
 	@Modifying
 	@Transactional
 	@Query("update Employee e set e.name = :name, e.department = :department, e.salary = :salary, e.experience = :experience where e.id = :id")
-	int updateEmployeeDetails(@Param("name") String name,
-							 @Param("department") String department,
-							 @Param("salary") double salary,
-							 @Param("experience") int experience,
-							 @Param("id") long id);
+	int updateEmployeeDetails(String name,
+							 String department,
+							 double salary,
+							int experience,
+							 long id);
 
 	// Delete by id
 	@Modifying
